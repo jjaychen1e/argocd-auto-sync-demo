@@ -1,5 +1,5 @@
 controller:
   autoscaling:
     enabled: true
-    minReplicas: 1
-    maxReplicas: 1
+    minReplicas: 2
+    maxReplicas: 2
