@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress-nginx
+spec:
+  destination:
+    name: ''
+    namespace: ingress-nginx-namespace
+    server: 'https://kubernetes.default.svc'
+  sources:
+  - repoURL: https://github.com/jjaychen1e/argocd-auto-sync-demo.git
+    targetRevision: main
+    ref: helm-value-repo
+  - repoURL: 'https://kubernetes.github.io/ingress-nginx'
+    path: ''
+    targetRevision: 4.9.0
+    chart: ingress-nginx
+    helm:
+      valueFiles:
+      - $helm-value-repo/demo-auto-sync/helm-values.yaml
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
+    syncOptions:
+    - CreateNamespace=true

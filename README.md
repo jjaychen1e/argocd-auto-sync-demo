@@ -1,0 +1,2 @@
+# argocd-auto-sync-demo
+ 
