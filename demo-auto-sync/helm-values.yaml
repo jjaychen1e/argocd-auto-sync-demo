@@ -1,0 +1,5 @@
+controller:
+  autoscaling:
+    enabled: true
+    minReplicas: 3
+    maxReplicas: 3
